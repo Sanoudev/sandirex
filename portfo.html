@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <!-- SEO de base -->
+  <title>Sandirex · Réalisations digitales & imprimées</title>
+  <meta name="description" content="Portfolio des réalisations Sandirex : imprimerie, web, restauration, éducation et travel. Design moderne et solutions innovantes.">
+  <!-- Google Fonts professionnelle -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------- RESET & VARIABLES -------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* navigation fluide */
+      font-size: 16px;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* dégradés dynamiques de fond (cohérents, aérés) */
+    .gradient-bg {
+      background: linear-gradient(145deg, #f8faff 0%, #edf2fc 45%, #e6ecf9 100%);
+    }
+
+    .gradient-footer {
+      background: linear-gradient(125deg, #0b0d15 0%, #1a1f2b 100%);
+    }
+
+    /* conteneur principal */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* -------------------- TYPO & COULEURS IDENTITAIRES ---------- */
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .logo-san {
+      color: #000000; /* noir pur */
+    }
+    .logo-direx {
+      color: #0A4BFF; /* bleu moderne */
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #0A4BFF;
+      border-radius: 4px;
+    }
+
+    /* -------------------- NAVBAR FIXE -------------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.80);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      z-index: 1000;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(10, 75, 255, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 2.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: #1a1a1a;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      color: #0A4BFF;
+      border-bottom-color: #0A4BFF;
+    }
+
+    /* -------------------- BOUTONS & HOVER -------------------- */
+    .btn {
+      display: inline-block;
+      background: #0A4BFF;
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 2.5rem;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 12px 24px -8px rgba(10, 75, 255, 0.3);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 1.1rem;
+    }
+    .btn:hover {
+      background: #0036c9;
+      transform: scale(1.02) translateY(-3px);
+      box-shadow: 0 22px 30px -8px rgba(10, 75, 255, 0.4);
+    }
+
+    .btn-small {
+      background: #0A4BFF;
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 6px 12px rgba(10,75,255,0.2);
+    }
+    .btn-small:hover {
+      background: #0036c9;
+      transform: scale(1.03);
+      box-shadow: 0 12px 18px -6px rgba(10,75,255,0.4);
+    }
+
+    /* -------------------- SECTIONS -------------------- */
+    section {
+      padding: 6rem 0;
+    }
+
+    /* Hero */
+    .hero {
+      background-color: #19B8FF;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+      padding-top: 5rem; /* pour navbar fixe */
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      animation: apparition 0.9s cubic-bezier(0.15, 0.85, 0.3, 1.05) forwards;
+    }
+
+    @keyframes apparition {
+      0% { opacity: 0; transform: translateY(25px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: #2e3a4b;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    /* Grille projets */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    /* Carte projet */
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(10, 75, 255, 0.03);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 45px -12px rgba(10, 75, 255, 0.2);
+    }
+
+    /* Image container */
+    .project-img {
+      width: 100%;
+      height: 220px; /* hauteur fixe */
+      overflow: hidden;
+      background-color: #f2f5fc;
+      position: relative;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* couvre sans déformation */
+      display: block;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.06); /* zoom léger */
+    }
+
+    .project-info {
+      padding: 1.8rem 1.5rem 2rem 1.5rem;
+      background: white;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .project-info p {
+      color: #3f4a5a;
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .project-info .btn-small {
+      align-self: flex-start;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      font-size: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      
+    }
+
+    /* -------------------- RESPONSIVE (grille + mobile) ------ */
+    @media screen and (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar .nav-links {
+        display: none; /* très épuré : on laisse le logo et on garde le scroll natif, version minimaliste */
+      }
+      .nav-container {
+        justify-content: center;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .project-img {
+        height: 200px;
+      }
+    }
+
+    /* animation au scroll simple (apparition progressive) */
+    .fade-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* petite touche design : séparateur */
+    .small-border {
+      width: 80px;
+      height: 3px;
+      background: #0A4BFF;
+      margin: 1.5rem 0 2rem 0;
+      border-radius: 4px;
+    }
+
+    /* z-index si besoin (rien de conflictuel, mais par précaution) */
+    .project-img {
+      z-index: 2;
+    }
+    .project-info {
+      z-index: 3;
+    }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- barre de navigation fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="portfo.html" class="logo" aria-label="Sandirex accueil">
+        <span class="logo-san">San</span><span class="logo-direx">direx</span>
+      </a>
+      <div class="nav-links">
+        <a href="#realisations">Réalisations</a>
+        <a href="#footer-contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 1️⃣ HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="container hero-content">
+        <h1>Nos Réalisations</h1>
+        <p>Web · Template  · digital · Dépôt Github</p>
+        <a href="https://bit.ly/sandirex" class="btn" target="_blank" rel="noopener">Nous découvrir</a>
+      </div>
+    </section>
+
+    <!-- 2️⃣ SECTION PROJETS (grille) -->
+    <section id="realisations">
+      <div class="container">
+        <h2>Projets récents</h2>
+
+        <div class="projects-grid">
+          
+          <!-- Carte 1 : Sandirex Print -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/print.jpg" alt="Sandirex Print - imprimerie en ligne" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Sandirex Print</h3>
+              <p>Votre imprimerie professionnelle en ligne. Envoi de fichiers et livraison à domicile.</p>
+              <a href="Sandprint.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 2 : La Tavola -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/tavalo.jpg" alt="La Tavola - Restaurant italien Bamako" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>La Tavola</h3>
+              <p>Restaurant italien authentique au cœur de Bamako.</p>
+              <a href="tavola.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 3 : Sandirex – Formulaire d’inscription -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/form.jpg" alt="Sandirex formulaire inscription digitale" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Sandirex – Formulaire</h3>
+              <p>Solution digitale de gestion des inscriptions.</p>
+              <a href="forms.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 4 : Nebula Studio -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/nebula.jpg" alt="Nebula Studio agence digitale" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Nebula Studio</h3>
+              <p>Agence digitale spécialisée en développement web, design et marketing digital.</p>
+              <a href="studio.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 5 : Sandirex Shop -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/shop.jpg" alt="Sandirex Shop e-commerce" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Sandirex Shop</h3>
+              <p>Boutique en ligne de produits de qualité à prix compétitifs.</p>
+              <a href="shopsand.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 6 : Lycée Elite -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/elite.jpg" alt="Lycée Elite établissement scolaire" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Lycée Elite</h3>
+              <p>Établissement scolaire axé sur l’excellence académique.</p>
+              <a href="elite.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 7 : Sandirex Travel -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/travel.jpg" alt="Sandirex Travel agence de voyage" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>Sandirex Travel</h3>
+              <p>Agence de voyage proposant des expériences uniques au Mali et à l’international.</p>
+              <a href="voyage.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+
+          <!-- Carte 8 : OneChat (en cours) -->
+          <article class="project-card fade-scroll">
+            <div class="project-img">
+              <img src="images/onechat.jpg" alt="OneChat plateforme communication" loading="lazy" width="400" height="266">
+            </div>
+            <div class="project-info">
+              <h3>OneChat</h3>
+              <p>En cours de développement — Plateforme de communication entre institutions.</p>
+              <a href="Onechat.html" class="btn-small" target="_blank" rel="noopener">Visitez</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER minimaliste, fond sombre -->
+  <footer class="gradient-footer" id="footer-contact">
+    <div class="container footer">
+      <p>© 2025 <a href="https://bit.ly/sandirex" target="_blank" rel="noopener">Sandirex</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript pur : animation au scroll + gestion propre -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Sélection des éléments avec classe fade-scroll
+      const fadeElements = document.querySelectorAll('.fade-scroll');
+
+      // Vérification support Intersection Observer
+      if (window.IntersectionObserver) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // optionnel : on peut arrêter d'observer après l'apparition
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.2,
+          rootMargin: '0px 0px -20px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+      } else {
+        // fallback si IntersectionObserver non supporté (vieux navigateurs)
+        fadeElements.forEach(el => el.classList.add('visible'));
+      }
+
+      // s'assurer que les images ont un alt et tout est valide ; déjà fait.
+      // petits guards pour les liens externes (target blank safe)
+      const allExtLinks = document.querySelectorAll('a[target="_blank"]');
+      allExtLinks.forEach(link => {
+        if (link) link.setAttribute('rel', 'noopener noreferrer');
+      });
+
+      // améliorer le scroll smooth même si html déjà smooth, mais rien à faire.
+      // ajout d'un petit effet de hover sur les cartes : déjà géré en css
+    })();
+  </script>
+
+  <!-- note : Les images sont appelées depuis le dossier /images/ 
+       L'utilisateur devra placer les visuels correspondants. 
+       Tout est conforme à la demande : balises <img> avec alt, lazy loading, etc. -->
+</body>
+</html>

@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandirex Resto - Cuisine Malienne & Internationale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary: #D35400;
+            --secondary: #E67E22;
+            --accent: #F39C12;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --white: #FFFFFF;
+            --black: #333333;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* Header et Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-btns {
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--white);
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .menu-filters button {
+            padding: 8px 20px;
+            margin: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .menu-filters button.active, .menu-filters button:hover {
+            color: var(--primary);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title h3 {
+            margin: 0;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&w=1000&q=80') no-repeat center center/cover;
+            color: var(--white);
+        }
+
+        .reservation h2 {
+            color: var(--white);
+        }
+
+        .reservation-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        /* Events Section */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .event-img {
+            height: 200px;
+        }
+
+        .event-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 350px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-size: 5rem;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .testimonial-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-details h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author-details p {
+            margin: 0;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-info-content h4 {
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-newsletter input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -8px);
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-newsletter form {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Sandirex <span>Resto</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#events">Événements</a></li>
+          <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Découvrez les saveurs du Mali</h1>
+                <p>Une expérience culinaire unique alliant traditions maliennes et influences internationales</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="btn">Voir le menu</a>
+                    <a href="#reservation" class="btn btn-outline">Réserver une table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Histoire</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&w=1000&q=80" alt="Intérieur du restaurant">
+                </div>
+                <div class="about-text">
+                    <h3>Une passion pour la cuisine depuis 2010</h3>
+                    <p>Fondé en 2010 par le chef malien Amadou Coulibaly, Sandirex Resto est rapidement devenu une référence gastronomique à Bamako. Notre restaurant allie avec créativité les saveurs authentiques du Mali et les techniques culinaires internationales.</p>
+                    <p>Notre mission est de vous offrir une expérience culinaire mémorable dans une ambiance chaleureuse et accueillante, où chaque plat raconte une histoire et célèbre le riche patrimoine gastronomique malien.</p>
+                    <p>Nous nous engageons à utiliser des ingrédients frais et locaux, soutenant ainsi les producteurs de la région et garantissant la fraîcheur et la qualité de chacun de nos plats.</p>
+                    <a href="#contact" class="btn">Nous rendre visite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Menu</h2>
+                <p>Découvrez nos délicieuses spécialités</p>
+            </div>
+            <div class="menu-filters">
+                <button class="active" data-filter="all">Tous</button>
+                <button data-filter="entrees">Entrées</button>
+                <button data-filter="plats">Plats Principaux</button>
+                <button data-filter="desserts">Desserts</button>
+                <button data-filter="boissons">Boissons</button>
+            </div>
+            <div class="menu-items">
+                <!-- Entrée 1 -->
+                <div class="menu-item" data-category="entrees">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1619894991209-32b8fb1d5ce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFmcmljYW4lMjBmb29kfGVufDB8fDB8fHww&w=1000&q=80" alt="Accras de poisson">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Accras de poisson</h3>
+                            <span class="menu-item-price">4 500 XOF</span>
+                        </div>
+                        <p>Beignets de poisson épicés accompagnés d'une sauce pimentée maison</p>
+                    </div>
+                </div>
+                
+                <!-- Entrée 2 -->
+                <div class="menu-item" data-category="entrees">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNhbGFkJTIwYWZyaWNhaW58ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Salade Mali">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Salade Mali</h3>
+                            <span class="menu-item-price">3 500 XOF</span>
+                        </div>
+                        <p>Mélange de légumes frais, noix de cajou et poulet grillé avec une vinaigrette à la mangue</p>
+                    </div>
+                </div>
+                
+                <!-- Plat 1 -->
+                <div class="menu-item" data-category="plats">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG91bGV0CUyMHlhc3NhfGVufDB8fDB8fHww&w=1000&q=80" alt="Poulet Yassa">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Poulet Yassa</h3>
+                            <span class="menu-item-price">7 500 XOF</span>
+                        </div>
+                        <p>Poulet mariné au citron et oignons, servi avec du riz parfumé</p>
+                    </div>
+                </div>
+                
+                <!-- Plat 2 -->
+                <div class="menu-item" data-category="plats">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cml6CUyMFNlbmVnYWxhaXN8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Riz au gras">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Riz au gras</h3>
+                            <span class="menu-item-price">6 500 XOF</span>
+                        </div>
+                        <p>Riz cuit avec viande, légumes et épices, accompagné de plantains</p>
+                    </div>
+                </div>
+                
+                <!-- Dessert 1 -->
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFuZ28lMjBkZXNzZXJ0fGVufDB8fDB8fHww&w=1000&q=80" alt="Mango Delight">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Mango Delight</h3>
+                            <span class="menu-item-price">3 500 XOF</span>
+                        </div>
+                        <p>Mousse légère à la mangue fraîche sur un lit de biscuits croustillants</p>
+                    </div>
+                </div>
+                
+                <!-- Boisson 1 -->
+                <div class="menu-item" data-category="boissons">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlzcGFwlMjBqbmljZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Jus de Bissap">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Jus de Bissap</h3>
+                            <span class="menu-item-price">2 000 XOF</span>
+                        </div>
+                        <p>Boisson rafraîchissante à base d'hibiscus, spécialité malienne</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Réservation</h2>
+                <p>Réservez votre table en ligne</p>
+            </div>
+            <div class="reservation-form">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Votre téléphone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Heure</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Nombre de personnes</label>
+                        <input type="number" id="guests" class="form-control" min="1" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message spécial (optionnel)</label>
+                        <textarea id="message" class="form-control" rows="3" placeholder="Demandes particulières..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Réserver maintenant</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galerie</h2>
+                <p>Découvrez notre univers</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&w=1000&q=80" alt="Intérieur du restaurant">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFmcmljYW4lMjBmb29kfGVufDB8fDB8fHww&w=1000&q=80" alt="Plat traditionnel">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Ambiance du restaurant">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576854284880-3200b1c6d614?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHJlc3RhdXJhbnQlMjBjaGVmfGVufDB8fDB8fHww&w=1000&q=80" alt="Notre chef">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Service client">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emF8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Cuisine internationale">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Événements & Promotions</h2>
+                <p>Ne manquez pas nos événements spéciaux</p>
+            </div>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZXZlbnQlMjBuaWdodHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Soirée musicale">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Tous les vendredis - 19h à 23h</div>
+                        <h3>Soirée Musicale Live</h3>
+                        <p>Venez profiter de nos spécialités culinaires accompagnées de musique live traditionnelle malienne. Ambiance chaleureuse garantie!</p>
+                        <a href="#reservation" class="btn">Réserver</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&w=1000&q=80" alt="Happy Hour">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Du lundi au jeudi - 17h à 19h</div>
+                        <h3>Happy Hour</h3>
+                        <p>Profitez de -30% sur toutes nos boissons et cocktails maison durant notre happy hour. Tapas offerts avec chaque commande!</p>
+                        <a href="#contact" class="btn">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvb2tpbmclMjBjbGFzc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Atelier culinaire">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">25 de chaque mois - 10h à 13h</div>
+                        <h3>Atelier Cuisine Malienne</h3>
+                        <p>Apprenez à préparer des plats maliens traditionnels avec notre chef étoilé. Sur réservation, nombre de places limité.</p>
+                        <a href="#contact" class="btn">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ce que disent nos clients</h2>
+                <p>Découvrez leurs expériences</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"Une véritable découverte culinaire! Le poulet yassa était absolument délicieux, et le service impeccable. Je recommande vivement!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-img">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aïcha Traoré">
+                        </div>
+                        <div class="testimonial-author-details">
+                            <h4>Aïcha Traoré</h4>
+                            <p>Client fidèle</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"Ambiance chaleureuse, plats savoureux et authentiques. J'ai particulièrement apprécié les accras de poisson en entrée. À refaire!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jean Dupont">
+                        </div>
+                        <div class="testimonial-author-details">
+                            <h4>Jean Dupont</h4>
+                            <p>Touriste français</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"L'endroit parfait pour découvrir la gastronomie malienne dans un cadre moderne et élégant. Le personnel est aux petits soins!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Fatoumata Diallo">
+                        </div>
+                        <div class="testimonial-author-details">
+                            <h4>Fatoumata Diallo</h4>
+                            <p>Food blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre écoute</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info-content">
+                            <h4>Adresse</h4>
+                            <p>Rue 123, Quartier du Fleuve<br>Bamako, Mali</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-info-content">
+                            <h4>Téléphone</h4>
+                            <p>+223 20 12 34 56<br>+223 76 12 34 56</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-info-content">
+                            <h4>Email</h4>
+                            <p>info@sandirexresto.ml<br>reservation@sandirexresto.ml</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-info-content">
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Lundi - Vendredi: 11h - 23h<br>Samedi - Dimanche: 12h - Minuit</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24470.400371107725!2d-7.999999999999999!3d12.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDM5JzAwLjAiTiA3wrA1OSc1OS45Ilc!5e0!3m2!1sfr!2sml!4v1623932000000!5m2!1sfr!2sml" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Sandirex Resto</h3>
+                    <p>Découvrez les saveurs authentiques du Mali dans un cadre chaleureux et élégant. Une expérience culinaire unique alliant tradition et modernité.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Horaires</h3>
+                    <ul class="footer-links">
+                        <li>Lundi - Vendredi: 11h - 23h</li>
+                        <li>Samedi - Dimanche: 12h - Minuit</li>
+                        <li>Happy Hour: Lun-Jeu 17h-19h</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir nos dernières actualités et promotions.</p>
+                    <div class="footer-newsletter">
+                        <form>
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit" class="btn">S'abonner</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sandirex Resto. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation responsive
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const header = document.querySelector('header');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Changement de style au scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Filtrage du menu
+        const menuFilters = document.querySelectorAll('.menu-filters button');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                menuFilters.forEach(btn => btn.classList.remove('active'));
+                
+                // Ajouter la classe active au bouton cliqué
+                filter.classList.add('active');
+                
+                // Récupérer la valeur du filtre
+                const filterValue = filter.getAttribute('data-filter');
+                
+                // Filtrer les éléments du menu
+                menuItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Gestion des formulaires
+        const bookingForm = document.getElementById('booking-form');
+        const contactForm = document.getElementById('contact-form');
+
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Merci pour votre réservation! Nous vous contacterons bientôt pour confirmation.');
+                this.reset();
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
+                this.reset();
+            });
+        }
+
+        // Animation au défilement
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.menu-item, .event-card, .testimonial-card, .gallery-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialiser les styles pour l'animation
+        document.querySelectorAll('.menu-item, .event-card, .testimonial-card, .gallery-item').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Déclencher une première fois au chargement
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

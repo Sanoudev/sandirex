@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sandirex Travel - Votre agence de voyage au Mali pour réservation de billets d'avion, location de voiture, assistance visa et autres services de voyage.">
+    <title>Sandirex Travel - Agence de Voyage au Mali</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables et réinitialisation */
+        :root {
+            --primary-blue: #1e88e5;
+            --light-blue: #e3f2fd;
+            --dark-blue: #0d47a1;
+            --orange: #ff9800;
+            --gold: #ffb300;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--orange);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-orange {
+            background-color: var(--orange);
+        }
+
+        .btn-orange:hover {
+            background-color: #f57c00;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--orange);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark-gray);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 136, 229, 0.8), rgba(13, 71, 161, 0.8)), url('https://placehold.co/1200x800/1e88e5/ffffff?text=Mali+Voyages') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-gray);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        /* Booking Forms */
+        .booking-form {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Destinations Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light-blue);
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--primary-blue);
+            transform: scale(1.2);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-title {
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 10px;
+        }
+
+        .footer-link a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--orange);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--orange);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 16px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Sandirex<span>Travel</span></div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#destinations" class="nav-link">Destinations</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Voyagez avec confiance au Mali et au-delà</h1>
+            <p class="hero-subtitle">Découvrez des expériences uniques avec Sandirex Travel, votre partenaire de voyage de confiance</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn">Nos services</a>
+                <a href="#contact" class="btn btn-orange">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">À propos de Sandirex Travel</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://placehold.co/600x400/1e88e5/ffffff?text=Notre+Agence" alt="Agence Sandirex Travel">
+                </div>
+                <div class="about-text">
+                    <h3>Notre histoire</h3>
+                    <p>Fondée en 2010, Sandirex Travel s'est rapidement imposée comme une agence de voyage de référence au Mali. Notre mission est de rendre les voyages accessibles à tous, en offrant des services de qualité et personnalisés.</p>
+                    <p>Notre équipe de professionnels expérimentés vous accompagne dans toutes les étapes de votre voyage, de la planification à la réalisation.</p>
+                    <h3>Nos valeurs</h3>
+                    <ul>
+                        <li>Fiabilité et professionnalisme</li>
+                        <li>Service client personnalisé</li>
+                        <li>Expertise locale et internationale</li>
+                        <li>Engagement pour des voyages responsables</li>
+                    </ul>
+                    <a href="#contact" class="btn">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Nos services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Réservation de billets d'avion</h3>
+                    <p>Nous vous trouvons les meilleurs vols aux meilleurs prix vers toutes les destinations.</p>
+                    <button class="btn open-booking" data-service="vol">Réserver maintenant</button>
+                </div>
+                
+         <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Location de voiture</h3>
+                    <p>Large choix de véhicules pour tous vos déplacements au Mali et à l'étranger.</p>
+                    <button class="btn open-booking" data-service="voiture">Réserver maintenant</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Assistance visa</h3>
+                    <p>Nous vous accompagnons dans toutes les démarches pour l'obtention de votre visa.</p>
+                    <button class="btn open-booking" data-service="visa">Demander assistance</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Réservation d'hôtel</h3>
+                    <p>Des hébergements adaptés à tous les budgets dans le monde entier.</p>
+                    <button class="btn open-booking" data-service="hotel">Réserver maintenant</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Booking Form -->
+    <section id="booking-flight" class="section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Réservation de vol</h2>
+            <div class="booking-form">
+                <form id="flight-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="flight-from" class="form-label">De</label>
+                            <input type="text" id="flight-from" class="form-input" placeholder="Ville de départ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="flight-to" class="form-label">Vers</label>
+                            <input type="text" id="flight-to" class="form-input" placeholder="Ville d'arrivée" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="departure-date" class="form-label">Date de départ</label>
+                            <input type="date" id="departure-date" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="return-date" class="form-label">Date de retour</label>
+                            <input type="date" id="return-date" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passengers" class="form-label">Passagers</label>
+                            <select id="passengers" class="form-input" required>
+                                <option value="1">1 Adulte</option>
+                                <option value="2">2 Adultes</option>
+                                <option value="3">3 Adultes</option>
+                                <option value="4">4 Adultes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel-class" class="form-label">Classe</label>
+                            <select id="travel-class" class="form-input" required>
+                                <option value="economy">Économique</option>
+                                <option value="business">Affaires</option>
+                                <option value="first">Première</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Rechercher des vols</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Car Rental Form -->
+    <section id="booking-car" class="section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Location de voiture</h2>
+            <div class="booking-form">
+                <form id="car-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickup-location" class="form-label">Lieu de prise en charge</label>
+                            <input type="text" id="pickup-location" class="form-input" placeholder="Ville, aéroport..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dropoff-location" class="form-label">Lieu de restitution</label>
+                            <input type="text" id="dropoff-location" class="form-input" placeholder="Ville, aéroport..." required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickup-date" class="form-label">Date de prise en charge</label>
+                            <input type="date" id="pickup-date" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dropoff-date" class="form-label">Date de restitution</label>
+                            <input type="date" id="dropoff-date" class="form-input" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="car-type" class="form-label">Type de véhicule</label>
+                            <select id="car-type" class="form-input" required>
+                                <option value="economy">Économique</option>
+                                <option value="compact">Compact</option>
+                                <option value="intermediate">Intermédiaire</option>
+                                <option value="standard">Standard</option>
+                                <option value="suv">SUV</option>
+                                <option value="luxury">Luxe</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Rechercher des véhicules</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Gallery -->
+    <section id="destinations" class="section">
+        <div class="container">
+            <h2 class="section-title">Destinations populaires</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Bamako" alt="Bamako" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Bamako</h3>
+                        <p>La capitale vibrante du Mali</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Tombouctou" alt="Tombouctou" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Tombouctou</h3>
+                        <p>La cité mystérieuse du désert</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Djenné" alt="Djenné" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Djenné</h3>
+                        <p>Patrimoine mondial avec sa grande mosquée</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Pays+Dogon" alt="Pays Dogon" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Pays Dogon</h3>
+                        <p>Falaise de Bandiagara et culture unique</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Ségou" alt="Ségou" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Ségou</h3>
+                        <p>Artisanat et culture sur les rives du Niger</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Mopti" alt="Mopti" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Mopti</h3>
+                        <p>La Venise malienne au confluent des fleuves</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <div class="testimonials-container">
+                <div class="testimonial active">
+                    <p class="testimonial-text">"Sandirex Travel a organisé mon voyage au Mali de manière exceptionnelle. Leur service client est impeccable et leurs conseils étaient parfaits. Je recommande vivement!"</p>
+                    <p class="testimonial-author">Amadou K., Voyageur d'affaires</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"J'ai obtenu mon visa pour la France grâce à l'assistance de Sandirex Travel. Le processus était simple et rapide. Merci pour votre professionnalisme!"</p>
+                    <p class="testimonial-author">Fatoumata S., Étudiante</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"La location de voiture était sans problème, le véhicule était en excellent état et le processus de prise en charge très efficace. Je reviendrai certainement."</p>
+                    <p class="testimonial-author">Moussa D., Touriste</p>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>123 Avenue de l'Indépendance, Bamako, Mali</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+223 20 12 34 56</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@sandirextravel.ml</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Heures d'ouverture</h4>
+                            <p>Lun - Ven: 8h00 - 18h00</p>
+                            <p>Sam: 9h00 - 13h00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet</label>
+                            <input type="text" id="name" class="form-input" placeholder="Votre nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="Votre email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Sujet</label>
+                            <input type="text" id="subject" class="form-input" placeholder="Sujet de votre message" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-input" rows="5" placeholder="Votre message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 class="footer-title">Sandirex Travel</h3>
+                    <p>Votre partenaire de confiance pour tous vos voyages au Mali et à l'international. Nous nous engageons à vous offrir des services de qualité exceptionnelle.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#accueil">Accueil</a></li>
+                        <li class="footer-link"><a href="#about">À propos</a></li>
+                        <li class="footer-link"><a href="#services">Services</a></li>
+                        <li class="footer-link"><a href="#destinations">Destinations</a></li>
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#booking-flight">Billets d'avion</a></li>
+                        <li class="footer-link"><a href="#booking-car">Location de voiture</a></li>
+                        <li class="footer-link"><a href="#">Assistance visa</a></li>
+                        <li class="footer-link"><a href="#">Réservation d'hôtel</a></li>
+                        <li class="footer-link"><a href="#">Voyages organisés</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" required>
+                        </div>
+                        <button type="submit" class="btn">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sandirex Travel. Tous droits réservés.</p>
+                <p><span>Edit by <a href="https://bit.ly/sandirex">Sandirex</a></span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Gestion des formulaires de réservation
+        const bookingButtons = document.querySelectorAll('.open-booking');
+        
+        bookingButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const service = button.getAttribute('data-service');
+                
+                // Masquer tous les formulaires de réservation
+                document.querySelectorAll('section[id^="booking-"]').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Afficher le formulaire correspondant
+                if (service === 'vol') {
+                    document.getElementById('booking-flight').style.display = 'block';
+                    window.location.href = '#booking-flight';
+                } else if (service === 'voiture') {
+                    document.getElementById('booking-car').style.display = 'block';
+                    window.location.href = '#booking-car';
+                } else if (service === 'visa' || service === 'hotel') {
+                    alert('Service bientôt disponible! Contactez-nous pour plus d\'informations.');
+                    window.location.href = '#contact';
+                }
+            });
+        });
+        
+        // Gestion des témoignages
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = dot.getAttribute('data-index');
+                
+                // Retirer la classe active de tous les témoignages et points
+                testimonials.forEach(testimonial => {
+                    testimonial.classList.remove('active');
+                });
+                
+                testimonialDots.forEach(d => {
+                    d.classList.remove('active');
+                });
+                
+                // Ajouter la classe active au témoignage et point correspondants
+                testimonials[index].classList.add('active');
+                dot.classList.add('active');
+            });
+        });
+        
+        // Rotation automatique des témoignages
+        let testimonialIndex = 0;
+        
+        function rotateTestimonials() {
+            testimonialDots.forEach(d => d.classList.remove('active'));
+            testimonials.forEach(t => t.classList.remove('active'));
+            
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            
+            testimonials[testimonialIndex].classList.add('active');
+            testimonialDots[testimonialIndex].classList.add('active');
+        }
+        
+        setInterval(rotateTestimonials, 5000);
+        
+        // Gestion de la soumission des formulaires
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simulation d'envoi de formulaire
+                const formData = new FormData(form);
+                const formValues = Object.fromEntries(formData.entries());
+                
+                console.log('Formulaire soumis:', formValues);
+                
+                // Affichage d'un message de confirmation
+                alert('Merci! Votre demande a été envoyée. Nous vous contacterons bientôt.');
+                form.reset();
+                
+                // Pour les formulaires de réservation, on les cache après soumission
+                if (form.id === 'flight-form' || form.id === 'car-form') {
+                    document.getElementById('booking-flight').style.display = 'none';
+                    document.getElementById('booking-car').style.display = 'none';
+                }
+            });
+        });
+        
+        // Animation au défilement
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .gallery-item, .about-image, .about-text');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialisation des styles d'animation
+        document.querySelectorAll('.service-card, .gallery-item, .about-image, .about-text').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        // Premier déclenchement pour les éléments déjà visibles
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
