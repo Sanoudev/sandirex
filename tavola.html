@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Tavola - Authentique restaurant italien à Bamako. Découvrez nos délicieuses pizzas, pâtes et spécialités italiennes dans une ambiance chaleureuse.">
+    <meta name="keywords" content="restaurant italien, pizza, pâtes, cuisine italienne, Bamako, Mali">
+    <meta name="author" content="La Tavola">
+    <title>La Tavola - Restaurant Italien</title>
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary-color: #c41e3a;
+            --secondary-color: #f8f0e3;
+            --accent-color: #d4af37;
+            --dark-color: #2c292d;
+            --light-color: #ffffff;
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-secondary: 'Georgia', serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: var(--font-secondary);
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Header et Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(44, 41, 45, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            color: var(--light-color);
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--light-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&h=1080&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-color);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-secondary);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-secondary);
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--light-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-image {
+            height: 200px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-family: var(--font-secondary);
+        }
+
+        .menu-price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .menu-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light-color);
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Reservation Section */
+        .reservation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2);
+        }
+
+        .error {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-family: var(--font-secondary);
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .reservation-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 101;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--dark-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                transition: var(--transition);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 20px 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .menu-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">La <span>Tavola</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Galerie</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Témoignages</a></li>
+                    <li class="nav-item"><a href="#reservation" class="nav-link">Réservation</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger" aria-label="Menu navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenue à La Tavola</h1>
+            <p class="hero-subtitle">Découvrez l'authentique cuisine italienne au cœur de Bamako</p>
+            <a href="#reservation" class="btn">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Notre Histoire</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Une passion pour la vraie cuisine italienne</h3>
+                    <p>Fondé en 2010, La Tavola est né de l'amour pour la cuisine authentique italienne et du désir de partager cette passion avec les habitants de Bamako.</p>
+                    <p>Notre chef, Giovanni Rossi, formé à Naples, apporte avec lui les recettes ancestrales de sa famille et sélectionne soigneusement les meilleurs ingrédients pour créer des plats qui racontent l'histoire de l'Italie.</p>
+           <p>Dans notre restaurant chaleureux et accueillant, nous nous efforçons de créer une expérience culinaire mémorable où tradition et innovation se rencontrent.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1619894991209-42e777c7b1f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80" alt="Intérieur du restaurant La Tavola">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section menu">
+        <div class="container">
+            <h2 class="section-title">Notre Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Pizza Margherita</h3>
+                            <span class="menu-price">12.500 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Sauce tomate, mozzarella di bufala, basilic frais, huile d'olive extra vierge</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Lasagnes Bolognaise</h3>
+                            <span class="menu-price">15.000 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Pâtes fraîches, bœuf haché, sauce bolognaise, béchamel, parmesan</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Risotto aux Champignons</h3>
+                            <span class="menu-price">14.000 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Riz Arborio, mélange de champignons, bouillon de légumes, parmesan, persil</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Osso Buco</h3>
+                            <span class="menu-price">18.500 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Jarret de veau braisé, gremolata, risotto milanaise</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1516100882582-96c3a05fe590?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=200&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Tiramisu</h3>
+                            <span class="menu-price">7.500 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Biscuits imbibés de café, mascarpone, cacao</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image" style="background-image: url('https://images.unsplash.com/photo-1534352956036-cd81e27dd615?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=200&q=80');"></div>
+                    <div class="menu-content">
+                        <div class="menu-title">
+                            <h3>Panna Cotta</h3>
+                            <span class="menu-price">6.500 FCFA</span>
+                        </div>
+                        <p class="menu-desc">Crème dessert vanillée, coulis de fruits rouges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Plat italien" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Intérieur du restaurant" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Salade italienne" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Cuisine ouverte" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Dessert italien" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80" alt="Pizza italienne" class="gallery-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Témoignages</h2>
+            <div class="testimonials-container">
+                <div class="testimonial active">
+                    <p class="testimonial-text">Un véritable voyage en Italie sans quitter Bamako! Les pâtes sont faites maison et la pizza est exactement comme à Naples. Service impeccable et ambiance chaleureuse.</p>
+                    <p class="testimonial-author">Aïcha K.</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">J'ai célébré mon anniversaire ici et ce fut une expérience mémorable. Le personnel a été attentionné et la nourriture exceptionnelle. Je recommande vivement le tiramisu!</p>
+                    <p class="testimonial-author">Moussa D.</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">En tant qu'expatrié italien, je suis très exigeant sur la cuisine de mon pays. La Tavola a dépassé toutes mes attentes. Authenticité et qualité au rendez-vous.</p>
+                    <p class="testimonial-author">Luca B.</p>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Reservation Section -->
+    <section id="reservation" class="section">
+        <div class="container">
+            <h2 class="section-title">Réservation</h2>
+            <form id="reservation-form" class="reservation-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nom complet</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                    <div class="error" id="name-error">Veuillez entrer votre nom</div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                    <div class="error" id="email-error">Veuillez entrer un email valide</div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="form-label">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                    <div class="error" id="phone-error">Veuillez entrer un numéro de téléphone valide</div>
+                </div>
+                <div class="form-group">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" id="date" name="date" class="form-input" required>
+                    <div class="error" id="date-error">Veuillez sélectionner une date</div>
+                </div>
+                <div class="form-group">
+                    <label for="time" class="form-label">Heure</label>
+                    <input type="time" id="time" name="time" class="form-input" required>
+                    <div class="error" id="time-error">Veuillez sélectionner une heure</div>
+                </div>
+                <div class="form-group">
+                    <label for="guests" class="form-label">Nombre de personnes</label>
+                    <input type="number" id="guests" name="guests" class="form-input" min="1" max="20" required>
+                    <div class="error" id="guests-error">Veuillez indiquer le nombre de personnes</div>
+                </div>
+                <button type="submit" class="btn">Réserver</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Rue de la Paix, Bamako, Mali</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+223 70 71 75 80</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@latavola.it</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p>Lundi - Vendredi: 11h - 22h</p>
+                            <p>Samedi - Dimanche: 12h - 23h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.22703461602!2d-8.00269942416155!3d12.650315316914474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDM5JzAxLjEiTiA4wrAwMCcwOS44Ilc!5e0!3m2!1sfr!2sml!4v1620000000000!5m2!1sfr!2sml" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">La <span>Tavola</span></div>
+                    <p>Restaurant italien authentique au cœur de Bamako, proposant des plats traditionnels préparés avec des ingrédients frais et de qualité.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="Twitter">TW</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-heading">Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-opening">
+                    <h3 class="footer-heading">Horaires d'Ouverture</h3>
+                    <ul>
+                        <li>Lundi - Vendredi: 11h - 22h</li>
+                        <li>Samedi: 12h - 23h</li>
+                        <li>Dimanche: 12h - 23h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 La Tavola. Tous droits réservés. </p>
+            <p><span>Edit by <a href="https://bit.ly/sandirex">Sandirex</a></span></p>
+            </div>
+        </div>
+    </footer>
+    <!-- Reservation Modal -->
+    <div class="modal" id="reservation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Réservation Confirmée</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="reservation-details" id="reservation-details">
+                <!-- Reservation details will be inserted here by JavaScript -->
+            </div>
+            <div class="modal-buttons">
+                <button class="btn" id="modal-close">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu hamburger
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Testimonials slider
+            const testimonialDots = document.querySelectorAll('.testimonial-dot');
+            const testimonials = document.querySelectorAll('.testimonial');
+            
+            testimonialDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    
+                    // Remove active class from all dots and testimonials
+                    testimonialDots.forEach(d => d.classList.remove('active'));
+                    testimonials.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked dot and corresponding testimonial
+                    this.classList.add('active');
+                    testimonials[index].classList.add('active');
+                });
+            });
+            
+            // Auto rotate testimonials
+            let testimonialIndex = 0;
+            function rotateTestimonials() {
+                testimonialDots.forEach(d => d.classList.remove('active'));
+                testimonials.forEach(t => t.classList.remove('active'));
+                
+                testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+                
+                testimonialDots[testimonialIndex].classList.add('active');
+                testimonials[testimonialIndex].classList.add('active');
+            }
+            
+            let testimonialInterval = setInterval(rotateTestimonials, 5000);
+            
+            // Pause rotation when hovering over testimonials
+            const testimonialsContainer = document.querySelector('.testimonials-container');
+            testimonialsContainer.addEventListener('mouseenter', () => {
+                clearInterval(testimonialInterval);
+            });
+            
+            testimonialsContainer.addEventListener('mouseleave', () => {
+                testimonialInterval = setInterval(rotateTestimonials, 5000);
+            });
+            
+            // Form validation and submission
+            const reservationForm = document.getElementById('reservation-form');
+            const modal = document.getElementById('reservation-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const reservationDetails = document.getElementById('reservation-details');
+            
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset error messages
+                document.querySelectorAll('.error').forEach(error => {
+                    error.style.display = 'none';
+                });
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const guests = document.getElementById('guests').value;
+                
+                let isValid = true;
+                
+                // Validate name
+                if (name === '') {
+                    document.getElementById('name-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('email-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate phone (basic validation)
+                const phoneRegex = /^[+0-9][0-9]{7,15}$/;
+                if (!phoneRegex.test(phone)) {
+                    document.getElementById('phone-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate date
+                if (date === '') {
+                    document.getElementById('date-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate time
+                if (time === '') {
+                    document.getElementById('time-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate guests
+                if (guests === '' || guests < 1 || guests > 20) {
+                    document.getElementById('guests-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Create reservation object
+                    const reservation = {
+                        name,
+                        email,
+                        phone,
+                        date,
+                        time,
+                        guests,
+                        reservationId: Date.now().toString().slice(-6)
+                    };
+                    
+                    // Save to localStorage
+                    localStorage.setItem('reservation', JSON.stringify(reservation));
+                    
+                    // Display reservation details in modal
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const reservationDate = new Date(date).toLocaleDateString('fr-FR', options);
+                    
+                    reservationDetails.innerHTML = `
+                        <div class="detail-item">
+                            <span>Numéro de réservation:</span>
+                            <span>${reservation.reservationId}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Nom:</span>
+                            <span>${name}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Email:</span>
+                            <span>${email}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Téléphone:</span>
+                            <span>${phone}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Date:</span>
+                            <span>${reservationDate}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Heure:</span>
+                            <span>${time}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Nombre de personnes:</span>
+                            <span>${guests}</span>
+                        </div>
+                        <p style="margin-top: 20px;">Un email de confirmation a été envoyé à ${email}. Merci pour votre réservation!</p>
+                    `;
+                    
+                    // Show modal
+                    modal.style.display = 'flex';
+                    
+                    // Reset form
+                    reservationForm.reset();
+                }
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            modalCloseBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
