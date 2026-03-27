@@ -1062,6 +1062,13 @@
   gtag('js', new Date());
 
   gtag('config', 'G-MDPFV50WV5');
+
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("PWA prête"))
+    .catch((err) => console.log(err));
+}
 </script>
 </body>
 </html>
